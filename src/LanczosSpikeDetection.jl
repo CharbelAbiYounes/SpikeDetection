@@ -63,7 +63,7 @@ function CholeskyConv(mat,tol::Float64,k::Integer,jmp::Integer,max_iter::Integer
     return Convflag, Cholesky(SymTridiagonal(d[1:i],od[1:i-1]))
 end
 
-function CholeskyList(mat,tol::Float64,k::Integer,jmp::Integer,max_iter::Integer,vecNbr::Integer;Modtol::Float64=tol,vecList::Matrix=randn(size(mat,1),vecNbr))
+function CholeskyList(mat,tol::Float64,k::Integer,jmp::Integer,max_iter::Integer,vecNbr::Integer;Modtol::Float64=tol,vecList=randn(size(mat,1),vecNbr))
     ModChol = Vector{Matrix{Float64}}(undef, vecNbr)
     TChol = Vector{Matrix{Float64}}(undef, vecNbr)
     sizelist = zeros(Int64,vecNbr)
@@ -237,7 +237,7 @@ function LanczosConv(mat,tol::Float64,k::Integer,jmp::Integer,max_iter::Integer;
     return Convflag, SymTridiagonal(d[1:i],od[1:i-1])
 end
 
-function JacobiList(mat,tol::Float64,k::Integer,jmp::Integer,max_iter::Integer,vecNbr::Integer;Modtol::Float64=tol,vecList::Matrix=randn(size(mat,1),vecNbr))
+function JacobiList(mat,tol::Float64,k::Integer,jmp::Integer,max_iter::Integer,vecNbr::Integer;Modtol::Float64=tol,vecList=randn(size(mat,1),vecNbr))
     ModJac = Vector{Matrix{Float64}}(undef, vecNbr)
     TJac = Vector{Matrix{Float64}}(undef, vecNbr)
     sizelist = zeros(Int64,vecNbr)

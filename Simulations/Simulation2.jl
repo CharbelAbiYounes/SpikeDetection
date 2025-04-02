@@ -1,5 +1,5 @@
 using LinearAlgebra, Distributions, Random, Plots, LaTeXStrings, DataFrames, CSV, Distributed, Optim, TracyWidomBeta
-include("/src/LanczosSpikeEstimation.jl")
+include("/src/LanczosSpikeDetection.jl")
 include("/src/AuxiliaryFunctions.jl")
 include("/src/PA.jl")
 include("/src/BEMA.jl")
@@ -14,7 +14,7 @@ addprocs([nodes[4] for j in 1:num_procs],tunnel=true)
 addprocs(num_procs-1)
 @everywhere begin
     using LinearAlgebra, Distributions, Random, Optim, TracyWidomBeta
-    include("/src/LanczosSpikeEstimation.jl")
+    include("/src/LanczosSpikeDetection.jl")
     include("/src/AuxiliaryFunctions.jl")
     include("/src/PA.jl")
     include("/src/BEMA.jl")

@@ -1,5 +1,5 @@
 using LinearAlgebra, Distributions, Random, Plots, LaTeXStrings, DataFrames, CSV
-include("/src/LanczosSpikeEstimation.jl")
+include("/src/LanczosSpikeDetection.jl")
 
 f = open("hosts.txt")
 nodes = readlines(f)
@@ -11,7 +11,7 @@ addprocs([nodes[4] for j in 1:num_procs],tunnel=true)
 addprocs(num_procs-1)
 @everywhere begin
     using LinearAlgebra, Distributions, Random
-    include("/src/LanczosSpikeEstimation.jl")
+    include("/src/LanczosSpikeDetection.jl")
 end
 
 # Density and spike estimation for different values of d
