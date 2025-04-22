@@ -49,10 +49,10 @@ W = sqrtΣ*(1/M*X*X')*sqrtΣ'|>Symmetric
 evals = eigvals(W)
 true_spikes = evals[end:-1:end-2]
 p3 = histogram(quantiles,bins=quantiles[4]-0.2:0.1:quantiles[1]+0.2,normalize=:pdf,label="ESD of Σ",framestyle=:box, legendfontsize=12, xtickfontsize=12, ytickfontsize=12)
-vecNbr = 100
+vecNbr = 200
 k = convert(Int64,floor(log(N)/2))
 jmp = 5
-tol = 3/sqrt(N)
+tol = 2/sqrt(N)
 max_iter = convert(Int64,ceil(max(6*log(N)+24,N/4,sqrt(N))))
 TChol,L_list = CholeskyList(W,tol,k,jmp,max_iter,vecNbr)
 γmin, γplus = EstimSupp(L_list)
